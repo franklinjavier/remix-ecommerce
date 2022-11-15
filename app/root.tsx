@@ -1,11 +1,18 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 
 import tailwind from './tailwind.css'
+import { getUser } from './utils/session.server'
 
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
+import type { LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node'
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: tailwind }]
+}
+
+export async function loader({ request }: LoaderArgs) {
+  const user = await getUser(request)
+
+  return { user }
 }
 
 export const meta: MetaFunction = () => ({
