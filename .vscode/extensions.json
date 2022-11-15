@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "codeandstuff.package-json-upgrade",
+    "esbenp.prettier-vscode",
+    "mattpocock.ts-error-translator",
+    "wix.vscode-import-cost",
+    "adpyke.codesnap",
+    "mikestead.dotenv",
+    "prisma.prisma",
+    "gruntfuggly.todo-tree",
+    "ms-vsliveshare.vsliveshare-pack"
+  ]
+}
