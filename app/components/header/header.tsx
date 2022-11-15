@@ -5,12 +5,14 @@ import { Container } from '../container'
 import { Filters } from '../filters'
 import { Search } from '../search'
 import { User } from '../user'
+import { useProducts } from '~/hooks/useProducts'
 
 export function Header() {
   const formRef = useRef<HTMLFormElement>(null)
   const submit = useSubmit()
   const location = useLocation()
-  const hasFilter = location.pathname === '/'
+  const products = useProducts()
+  const hasFilter = !!products.length && location.pathname === '/'
 
   const handleChange = () => {
     if (formRef) {
@@ -22,7 +24,7 @@ export function Header() {
     <div className="flex flex-col" onChange={handleChange}>
       <header className="flex h-60 items-center bg-indigo-800 md:h-40">
         <Container className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <NavLink className="text-6xl font-semibold text-white" prefetch="intent" to="/">
+          <NavLink className="text-6xl font-semibold text-white" to="/">
             ⚡️
           </NavLink>
           <Search formRef={formRef} />

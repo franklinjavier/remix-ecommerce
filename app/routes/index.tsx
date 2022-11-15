@@ -13,6 +13,8 @@ export async function loader({ request }: LoaderArgs) {
   const params = Object.fromEntries(new URL(request.url).searchParams)
   const data = await search(params.query, params)
 
+  if (!data?.hits?.length) return json(null, { status: 404 })
+
   return json(data)
 }
 
@@ -23,7 +25,7 @@ export default function Home() {
     <>
       <Header />
       <Container className="my-10">
-        <Showcase products={data.hits} />
+        <Showcase products={data?.hits || []} />
         <div className="mt-10 flex justify-center">
           <Pagination />
         </div>
