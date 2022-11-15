@@ -5,9 +5,10 @@ import type { Product } from '~/models/product'
 
 type ShowcaseItemProps = {
   product: Product
+  isLazy?: boolean
 }
 
-export function ShowcaseItem({ product }: ShowcaseItemProps) {
+export function ShowcaseItem({ product, isLazy }: ShowcaseItemProps) {
   return (
     <NavLink
       className="relative block cursor-pointer rounded-xl border border-gray-200 p-8 transition-all hover:border-gray-400"
@@ -19,6 +20,7 @@ export function ShowcaseItem({ product }: ShowcaseItemProps) {
           alt={product.description}
           className="h-48 w-96 object-scale-down"
           height="130"
+          loading={isLazy ? 'lazy' : undefined}
           src={product.image}
           width="200"
         />

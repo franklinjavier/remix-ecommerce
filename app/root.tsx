@@ -12,7 +12,7 @@ export const links: LinksFunction = () => {
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
   title: 'Remix Ecommerce',
-  description: 'Produtos com preço incríveis',
+  description: 'Produtos com preços incríveis',
   viewport: 'width=device-width,initial-scale=1',
 })
 
@@ -46,20 +46,6 @@ export default function App() {
     </Document>
   )
 }
-
-// export function CatchBoundary() {
-//   const caught = useCatch()
-
-//   return (
-//     <Document>
-//       <h1>Caught</h1>
-//       <p>Status: {caught.status}</p>
-//       <pre>
-//         <code>{JSON.stringify(caught.data, null, 2)}</code>
-//       </pre>
-//     </Document>
-//   )
-// }
 
 export function ErrorBoundary({ error }: { error: any }) {
   return (
