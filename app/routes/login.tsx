@@ -19,7 +19,7 @@ export const meta: MetaFunction = () => {
 }
 
 export const action = async ({ request }: ActionArgs) => {
-  await new Promise((res) => setTimeout(res, 2000))
+  await new Promise((res) => setTimeout(res, 300))
 
   const data = Object.fromEntries(await request.formData())
   let errors: ErrorsProp = {}
