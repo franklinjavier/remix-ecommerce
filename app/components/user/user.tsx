@@ -8,7 +8,9 @@ export function User() {
   return user ? (
     <div className="flex gap-2 text-white">
       Olá, <NavLink to="/account">{user.name}</NavLink>&bull;
-      <NavLink to="/logout">Sair</NavLink>
+      <NavLink rel="nofollow" to="/logout">
+        Sair
+      </NavLink>
     </div>
   ) : (
     <NavLink className="text-white" prefetch="intent" to="/login">
