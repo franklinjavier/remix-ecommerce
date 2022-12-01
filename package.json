@@ -29,7 +29,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "^1.7.5",
+    "@remix-run/dev": "^1.8.0",
     "@remix-run/eslint-config": "^1.7.5",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@testing-library/jest-dom": "^5.16.5",
