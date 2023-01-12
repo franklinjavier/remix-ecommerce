@@ -13,7 +13,7 @@ export function ShowcaseItem({ product, isLazy }: ShowcaseItemProps) {
     <NavLink
       className="relative block cursor-pointer rounded-xl border border-gray-200 p-8 transition-all hover:border-gray-400"
       prefetch="intent"
-      to={`product/${product.objectID}`}
+      to={`/product/${product.objectID}`}
     >
       <picture>
         <img

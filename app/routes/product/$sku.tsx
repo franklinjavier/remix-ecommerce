@@ -1,4 +1,4 @@
-import { useLoaderData } from '@remix-run/react'
+import { Link, useLoaderData } from '@remix-run/react'
 
 import { Container } from '~/components/container'
 import { Rating } from '~/components/rating'
@@ -27,12 +27,12 @@ export default function ProductPage() {
           <ol className="flex items-center">
             {product?.categories.map((breadcrumb) => (
               <li className="flex items-center" key={breadcrumb}>
-                <a
+                <Link
                   className="mr-2 text-sm font-medium text-indigo-600 transition-all hover:underline"
-                  href={breadcrumb}
+                  to={`/category/${breadcrumb}`}
                 >
                   {breadcrumb}
-                </a>
+                </Link>
                 <span className="h-6 w-6 text-gray-300">→</span>
               </li>
             ))}
