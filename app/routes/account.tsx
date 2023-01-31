@@ -7,12 +7,11 @@ import { ensureAuthenticated } from '~/utils/session.server'
 import type { LoaderArgs } from '@remix-run/node'
 
 export async function loader({ request }: LoaderArgs) {
-  await ensureAuthenticated(request)
-  return null
+  return await ensureAuthenticated(request)
 }
 
 const accountLinks = [
-  { to: '', text: 'Perfil' },
+  { to: '', text: 'Perfil', end: true },
   { to: 'address', text: 'Endereços' },
   { to: 'cards', text: 'Cartões' },
   { to: 'orders', text: 'Pedidos' },
@@ -30,6 +29,7 @@ export default function Account() {
                 className={({ isActive }) =>
                   `${isActive ? 'font-bold text-indigo-600' : ''} hover:font-bold hover:text-indigo-600`
                 }
+                end={link.end}
                 key={link.to}
                 to={link.to}
               >

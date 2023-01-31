@@ -47,7 +47,7 @@ export default function App() {
   )
 }
 
-export function ErrorBoundary({ error }: { error: any }) {
+export function ErrorBoundary({ error }: { error: Error }) {
   return (
     <Document>
       <h1>Error</h1>

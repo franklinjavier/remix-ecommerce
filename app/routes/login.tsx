@@ -1,5 +1,5 @@
 import { json } from '@remix-run/node'
-import { Form, useActionData, useTransition } from '@remix-run/react'
+import { Form, useActionData, useNavigation } from '@remix-run/react'
 
 import { Input } from '~/components/input'
 import { createUserSession } from '~/utils/session.server'
@@ -38,7 +38,7 @@ export const action = async ({ request }: ActionArgs) => {
 
 export default function Login() {
   const actionData = useActionData()
-  const transition = useTransition()
+  const transition = useNavigation()
   const isLoading = ['loading', 'submitting'].includes(transition.state)
 
   return (

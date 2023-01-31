@@ -6,7 +6,7 @@ import { getProduct } from '~/models/search.server'
 
 import type { LoaderArgs } from '@remix-run/node'
 
-export async function loader({ request, params }: LoaderArgs) {
+export async function loader({ params }: LoaderArgs) {
   let product
   if (params.sku) {
     product = await getProduct(params.sku)
@@ -17,7 +17,6 @@ export async function loader({ request, params }: LoaderArgs) {
 
 export default function ProductPage() {
   const product = useLoaderData<typeof loader>()
-
   if (!product) return null
 
   return (
