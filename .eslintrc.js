@@ -1,13 +1,6 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
-  extends: [
-    '@remix-run/eslint-config',
-    '@remix-run/eslint-config/node',
-    'prettier',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-  ],
-  plugins: ['import'],
+  extends: ['@remix-run/eslint-config', '@remix-run/eslint-config/node', 'prettier'],
   rules: {
     'import/default': 'error',
     'import/export': 'error',
