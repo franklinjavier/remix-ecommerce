@@ -1,6 +1,6 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 
-import tailwind from './tailwind.css'
+import tailwind from './styles/app.css'
 import { getUser } from './utils/session.server'
 
 import type { LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node'
