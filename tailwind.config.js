@@ -5,4 +5,7 @@ module.exports = {
     extend: {},
   },
   plugins: [require('@tailwindcss/line-clamp')],
+  future: {
+    unstable_tailwind: true,
+  },
 }
