@@ -1,5 +1,4 @@
-import { NavLink, useLocation, useSubmit } from '@remix-run/react'
-import { useRef } from 'react'
+import { NavLink, useLocation } from '@remix-run/react'
 
 import { Container } from '../container'
 import { Filters } from '../filters'
@@ -8,26 +7,18 @@ import { User } from '../user'
 import { useProducts } from '~/hooks/useProducts'
 
 export function Header() {
-  const formRef = useRef<HTMLFormElement>(null)
-  const submit = useSubmit()
   const location = useLocation()
   const products = useProducts()
   const hasFilter = !!products.length && location.pathname === '/'
 
-  const handleChange = () => {
-    if (formRef) {
-      submit(formRef.current, { replace: true })
-    }
-  }
-
   return (
-    <div className="flex flex-col" onChange={handleChange}>
+    <div className="flex flex-col">
       <header className="flex h-60 items-center bg-indigo-800 md:h-40">
         <Container className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <NavLink className="text-6xl font-semibold text-white" to="/">
             ⚡️
           </NavLink>
-          <Search formRef={formRef} />
+          <Search />
           <User />
         </Container>
       </header>

@@ -4,9 +4,9 @@ import { Container } from '~/components/container'
 import { Rating } from '~/components/rating'
 import { getProduct } from '~/models/search.server'
 
-import type { LoaderArgs } from '@remix-run/node'
+import type { LoaderFunctionArgs } from '@remix-run/node'
 
-export async function loader({ params }: LoaderArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   let product
   if (params.sku) {
     product = await getProduct(params.sku)

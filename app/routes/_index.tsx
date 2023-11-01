@@ -7,9 +7,9 @@ import { Pagination } from '~/components/pagination'
 import { Showcase } from '~/components/showcase'
 import { search } from '~/models/search.server'
 
-import type { LoaderArgs } from '@remix-run/node'
+import type { LoaderFunctionArgs } from '@remix-run/node'
 
-export async function loader({ request }: LoaderArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   const params = Object.fromEntries(new URL(request.url).searchParams)
   const data = await search(params.query, params)
 

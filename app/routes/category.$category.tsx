@@ -7,9 +7,9 @@ import { Pagination } from '~/components/pagination'
 import { Showcase } from '~/components/showcase'
 import { search } from '~/models/search.server'
 
-import type { LoaderArgs } from '@remix-run/node'
+import type { LoaderFunctionArgs } from '@remix-run/node'
 
-export async function loader({ request, params }: LoaderArgs) {
+export async function loader({ request, params }: LoaderFunctionArgs) {
   const { category } = params
 
   const data = await search('', { filters: `categories: "${category}"` })
