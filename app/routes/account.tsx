@@ -4,9 +4,9 @@ import { Container } from '~/components/container'
 import { Header } from '~/components/header'
 import { ensureAuthenticated } from '~/utils/session.server'
 
-import type { LoaderArgs } from '@remix-run/node'
+import type { LoaderFunctionArgs } from '@remix-run/node'
 
-export async function loader({ request }: LoaderArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   return await ensureAuthenticated(request)
 }
 

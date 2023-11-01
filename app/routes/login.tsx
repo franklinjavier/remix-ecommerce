@@ -4,7 +4,7 @@ import { Form, useActionData, useNavigation } from '@remix-run/react'
 import { Input } from '~/components/input'
 import { createUserSession } from '~/utils/session.server'
 
-import type { ActionArgs, MetaFunction } from '@remix-run/node'
+import type { ActionFunctionArgs, MetaFunction } from '@remix-run/node'
 
 type ErrorsProp = {
   password?: string
@@ -12,13 +12,13 @@ type ErrorsProp = {
 }
 
 export const meta: MetaFunction = () => {
-  return {
+  return [{
     title: 'Login',
     description: 'Faça seu login',
-  }
+  }]
 }
 
-export const action = async ({ request }: ActionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   await new Promise((res) => setTimeout(res, 300))
 
   const data = Object.fromEntries(await request.formData())
