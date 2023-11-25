@@ -1,5 +1,12 @@
-import { useUser } from '~/hooks/useUser'
 
+import { useUser } from '~/hooks/useUser'
+import { ensureAuthenticated } from '~/utils/session.server'
+
+import type { LoaderFunctionArgs } from '@remix-run/node'
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  return await ensureAuthenticated(request)
+}
 export default function Profile() {
   const user = useUser()
   if (!user) return null
