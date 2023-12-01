@@ -997,10 +997,10 @@
     undici "^5.22.1"
     ws "^7.4.5"
 
-"@remix-run/eslint-config@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/eslint-config/-/eslint-config-2.2.0.tgz#4cc515c37b036a045abe703cb79c21405f0c0e33"
-  integrity sha512-H+LPiQhsXaCsOVvyB5vf6wTAv72m/pI6rdoCjyx3ayipNGAuqldkAnmFD6Qa/Bpc/zRHk13+PZV27kjyNd32vw==
+"@remix-run/eslint-config@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/eslint-config/-/eslint-config-2.3.1.tgz#3e29f715cff28c4cf1c093b38c44c678b9bc2b43"
+  integrity sha512-nSPsgsEz6e3UDh2cDNq+tIoOf4yBnteuLyYGXyeOlW14oQoC4k5apfsjGAb3nphZtTNvTKP2qJhyYmje8Mr3Zw==
   dependencies:
     "@babel/core" "^7.21.8"
     "@babel/eslint-parser" "^7.21.8"
