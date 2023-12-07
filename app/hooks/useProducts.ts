@@ -1,5 +1,8 @@
-import { useMatches } from '@remix-run/react'
+import { useRouteLoaderData } from '@remix-run/react'
+
+import type { Product } from '~/types/product'
 
 export function useProducts() {
-  return useMatches().find((m: any) => m?.id === 'routes/index')?.data?.hits || []
+  const { products } = useRouteLoaderData('routes/_index') as { products: Product[] } ?? {}
+  return products || []
 }

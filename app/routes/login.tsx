@@ -12,10 +12,12 @@ type ErrorsProp = {
 }
 
 export const meta: MetaFunction = () => {
-  return [{
-    title: 'Login',
-    description: 'Faça seu login',
-  }]
+  return [
+    {
+      title: 'Login',
+      description: 'Faça seu login',
+    },
+  ]
 }
 
 export const action = async ({ request }: ActionFunctionArgs) => {
@@ -37,7 +39,12 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 }
 
 export default function Login() {
-  const actionData = useActionData()
+  const actionData = useActionData() as {
+    errors?: {
+      email: string
+      password: string
+    }
+  }
   const transition = useNavigation()
   const isLoading = ['loading', 'submitting'].includes(transition.state)
 

@@ -2,7 +2,6 @@ import { ensureAuthenticated } from '~/utils/session.server'
 
 import type { LoaderFunctionArgs } from '@remix-run/node'
 
-
 export async function loader({ request }: LoaderFunctionArgs) {
   return await ensureAuthenticated(request)
 }

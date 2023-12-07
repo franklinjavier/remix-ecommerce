@@ -1,6 +1,6 @@
 import { useSearchParams } from '@remix-run/react'
 
-import { Container } from '../container'
+import { Container } from './container'
 
 export function Filters() {
   const [params] = useSearchParams()

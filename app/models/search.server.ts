@@ -1,6 +1,7 @@
 import algoliasearch from 'algoliasearch'
 
-import type { Product } from './product'
+import type { Product } from '~/types/product'
+
 import type { SearchOptions } from '@algolia/client-search'
 
 const client = algoliasearch('latency', '6be0576ff61c053d5f9a3225e2a90f76')

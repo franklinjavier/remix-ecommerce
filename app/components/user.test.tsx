@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 
-import { User } from './user'
 import { renderWithRouter } from 'test/test-util'
+import { User } from '~/components/user'
 
 vi.mock('@remix-run/react', async () => ({
   ...(await vi.importActual('@remix-run/react')),

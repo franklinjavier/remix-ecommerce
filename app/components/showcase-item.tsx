@@ -1,7 +1,7 @@
 import { NavLink } from '@remix-run/react'
 
-import { Rating } from '../rating'
-import type { Product } from '~/models/product'
+import { Rating } from './rating'
+import type { Product } from '~/types/product'
 
 type ShowcaseItemProps = {
   product: Product

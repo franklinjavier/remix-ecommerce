@@ -1,9 +1,18 @@
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import {
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  isRouteErrorResponse,
+  useRouteError,
+} from '@remix-run/react'
 
 import globals from './globals.css'
 import { getUser } from './utils/session.server'
 
-import type { LinksFunction,  LoaderFunctionArgs,  MetaFunction } from '@remix-run/node'
+import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: globals }]
@@ -15,12 +24,14 @@ export async function loader({ request }: LoaderFunctionArgs) {
   return { user }
 }
 
-export const meta: MetaFunction = () => [{
-  charset: 'utf-8',
-  title: 'Remix Ecommerce',
-  description: 'Produtos com preços incríveis',
-  viewport: 'width=device-width,initial-scale=1',
-}]
+export const meta: MetaFunction = () => [
+  {
+    charset: 'utf-8',
+    title: 'Remix Ecommerce',
+    description: 'Produtos com preços incríveis',
+    viewport: 'width=device-width,initial-scale=1',
+  },
+]
 
 const Document = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -56,13 +67,34 @@ export default function App() {
   )
 }
 
-export function ErrorBoundary({ error }: { error: Error }) {
+export function ErrorBoundary() {
+  const error = useRouteError()
+  const isRouteError = isRouteErrorResponse(error)
+  const unknownError = 'Oops! We have a problem!'
+
+  const status: { [status: number]: string } = {
+    401: 'Looks like you tried to visit a page that you do not have access to.',
+    404: 'Looks like you tried to visit a page that does not exist.',
+    500: unknownError,
+  }
+
+  let message = isRouteError
+    ? error.data?.message ?? error.data
+    : error instanceof Error
+    ? error.message
+    : unknownError
+
+  let title = 'Oops!'
+
+  if (isRouteError) {
+    title = error.statusText
+    message = status[error.status]
+  }
+
   return (
     <Document>
-      <h1>Error</h1>
-      <p>{error.message}</p>
-      <p>The stack trace is:</p>
-      <pre>{error.stack}</pre>
+      <h1>{title}</h1>
+      <p>{message}</p>
     </Document>
   )
 }

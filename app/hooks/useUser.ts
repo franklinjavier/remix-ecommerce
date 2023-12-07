@@ -1,5 +1,8 @@
-import { useMatches } from '@remix-run/react'
+import { useRouteLoaderData } from '@remix-run/react'
+
+import type { loader } from '~/root'
 
 export function useUser() {
-  return useMatches().find((m: any) => m?.pathname === '/')?.data?.user
+  const data = useRouteLoaderData<typeof loader>('root')
+  return data?.user
 }

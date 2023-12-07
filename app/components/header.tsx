@@ -1,9 +1,9 @@
 import { NavLink, useLocation } from '@remix-run/react'
 
-import { Container } from '../container'
-import { Filters } from '../filters'
-import { Search } from '../search'
-import { User } from '../user'
+import { Container } from '~/components/container'
+import { Filters } from '~/components/filters'
+import { Search } from '~/components/search'
+import { User } from '~/components/user'
 import { useProducts } from '~/hooks/useProducts'
 
 export function Header() {

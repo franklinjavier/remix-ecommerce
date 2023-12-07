@@ -4,7 +4,7 @@ export function Search() {
   const [params] = useSearchParams()
   const query = params.get('query') || ''
   const submit = useSubmit()
-  const handleChange: React.ComponentProps<typeof Form>["onChange"] = (e) => {
+  const handleChange: React.ComponentProps<typeof Form>['onChange'] = (e) => {
     const form = e.currentTarget?.closest('form')
     if (form) {
       submit(form, { replace: true })

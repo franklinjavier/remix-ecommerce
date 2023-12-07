@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from '@remix-run/react'
 
 import { Container } from '~/components/container'
+import { NotFound } from '~/components/not-found'
 import { Rating } from '~/components/rating'
 import { getProduct } from '~/models/search.server'
 
@@ -77,5 +78,15 @@ export default function ProductPage() {
         </section>
       </div>
     </Container>
+  )
+}
+
+export function ErrorBoundary() {
+  return (
+    <>
+      <Container className="my-10">
+        <NotFound>Produto não encontrado!</NotFound>
+      </Container>
+    </>
   )
 }

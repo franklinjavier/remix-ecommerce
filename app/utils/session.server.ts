@@ -1,5 +1,7 @@
 import { createCookieSessionStorage, redirect } from '@remix-run/node'
 
+import type { User } from '~/types/user'
+
 export const sessionStorage = createCookieSessionStorage({
   cookie: {
     httpOnly: true, // for security reasons, make this cookie http only
@@ -27,7 +29,8 @@ export async function createUserSession(request: Request, email: string) {
   session.set('currentUser', { email, name: email.split('@')[0] })
   const cookie = await sessionStorage.commitSession(session, { maxAge: ONE_WEEK })
 
-  return redirect('/', {
+  const successRedirect = session.get('redirect') || '/'
+  return redirect(successRedirect, {
     headers: {
       'Set-Cookie': cookie,
     },
@@ -36,11 +39,21 @@ export async function createUserSession(request: Request, email: string) {
 
 export async function getUser(request: Request) {
   const session = await getSession(request)
-  return session.get('currentUser')
+  return session.get('currentUser') as User
 }
 
 export async function ensureAuthenticated(request: Request) {
   const user = await getUser(request)
-  if (!user) return logout(request)
-  return user
+  if (user) return user
+
+  const { pathname, search } = new URL(request.url)
+  const session = await getSession(request)
+
+  session.set('redirect', `${pathname}${search}`)
+
+  throw redirect('/login', {
+    headers: {
+      'Set-Cookie': await sessionStorage.commitSession(session),
+    },
+  })
 }
