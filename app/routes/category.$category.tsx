@@ -23,7 +23,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
 }
 
 export default function Category() {
-  const {products} = useLoaderData<typeof loader>()
+  const { products } = useLoaderData<typeof loader>()
 
   return (
     <>

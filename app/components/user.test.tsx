@@ -5,7 +5,7 @@ import { User } from '~/components/user'
 
 vi.mock('@remix-run/react', async () => ({
   ...(await vi.importActual('@remix-run/react')),
-  useMatches: () => [{ pathname: '/', data: { user: { name: 'Frank' } } }],
+  useRouteLoaderData: () => ({ user: { name: 'Frank' } }),
 }))
 
 test('should render logged user', () => {
