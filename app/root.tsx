@@ -1,18 +1,17 @@
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
   useRouteError,
-} from '@remix-run/react'
+} from 'react-router'
 
-import globals from './globals.css'
+import globals from './globals.css?url'
 import { getUser } from './utils/session.server'
 
-import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
+import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from 'react-router'
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: globals }]
@@ -25,18 +24,16 @@ export async function loader({ request }: LoaderFunctionArgs) {
 }
 
 export const meta: MetaFunction = () => [
-  {
-    charset: 'utf-8',
-    title: 'Remix Ecommerce',
-    description: 'Produtos com preços incríveis',
-    viewport: 'width=device-width,initial-scale=1',
-  },
+  { title: 'Remix Ecommerce' },
+  { name: 'description', content: 'Produtos com preços incríveis' },
 ]
 
 const Document = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <head>
+        <meta charSet="utf-8" />
+        <meta content="width=device-width,initial-scale=1" name="viewport" />
         <Meta />
         <Links />
       </head>
@@ -53,7 +50,6 @@ const Document = ({ children }: { children: React.ReactNode }) => {
         />
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   )
@@ -79,10 +75,10 @@ export function ErrorBoundary() {
   }
 
   let message = isRouteError
-    ? error.data?.message ?? error.data
+    ? (error.data?.message ?? error.data)
     : error instanceof Error
-    ? error.message
-    : unknownError
+      ? error.message
+      : unknownError
 
   let title = 'Oops!'
 

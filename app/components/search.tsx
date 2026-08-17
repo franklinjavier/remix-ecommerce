@@ -1,4 +1,4 @@
-import { Form, useSearchParams, useSubmit } from '@remix-run/react'
+import { Form, useSearchParams, useSubmit } from 'react-router'
 
 export function Search() {
   const [params] = useSearchParams()

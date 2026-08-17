@@ -1,7 +1,5 @@
-import { json } from '@remix-run/node'
-
 export const loader = () => {
-  return json({
+  return Response.json({
     status: 'OK',
     uptime: process.uptime(),
     env: process.env.NODE_ENV,

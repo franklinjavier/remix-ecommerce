@@ -1,11 +1,11 @@
-import { Link, useLoaderData } from '@remix-run/react'
+import { Link, useLoaderData } from 'react-router'
 
 import { Container } from '~/components/container'
 import { NotFound } from '~/components/not-found'
 import { Rating } from '~/components/rating'
 import { getProduct } from '~/models/search.server'
 
-import type { LoaderFunctionArgs } from '@remix-run/node'
+import type { LoaderFunctionArgs } from 'react-router'
 
 export async function loader({ params }: LoaderFunctionArgs) {
   let product

@@ -1,4 +1,4 @@
-import { NavLink } from '@remix-run/react'
+import { NavLink } from 'react-router'
 
 import { Rating } from './rating'
 import type { Product } from '~/types/product'

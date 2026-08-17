@@ -1,4 +1,4 @@
-const StarIcon = (props: any) => (
+const StarIcon = (props: React.ComponentProps<'svg'>) => (
   <svg
     aria-hidden="true"
     className="h-5 w-5 flex-shrink-0 text-gray-900"
