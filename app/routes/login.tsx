@@ -1,10 +1,9 @@
-import { json } from '@remix-run/node'
-import { Form, useActionData, useNavigation } from '@remix-run/react'
+import { Form, data, useActionData, useNavigation } from 'react-router'
 
 import { Input } from '~/components/input'
 import { createUserSession } from '~/utils/session.server'
 
-import type { ActionFunctionArgs, MetaFunction } from '@remix-run/node'
+import type { ActionFunctionArgs, MetaFunction } from 'react-router'
 
 type ErrorsProp = {
   password?: string
@@ -23,19 +22,19 @@ export const meta: MetaFunction = () => {
 export const action = async ({ request }: ActionFunctionArgs) => {
   await new Promise((res) => setTimeout(res, 300))
 
-  const data = Object.fromEntries(await request.formData())
-  let errors: ErrorsProp = {}
+  const values = Object.fromEntries(await request.formData())
+  const errors: ErrorsProp = {}
 
-  if (!data.email) {
+  if (!values.email) {
     errors.email = 'Campo obrigatório'
   }
-  if (!data.password) {
+  if (!values.password) {
     errors.password = 'Campo obrigatório'
   }
 
-  if (Object.keys(errors).length) return json({ errors }, { status: 401 })
+  if (Object.keys(errors).length) return data({ errors }, { status: 401 })
 
-  return createUserSession(request, data.email.toString())
+  return createUserSession(request, values.email.toString())
 }
 
 export default function Login() {

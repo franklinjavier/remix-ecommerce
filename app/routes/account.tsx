@@ -1,10 +1,10 @@
-import { NavLink, Outlet } from '@remix-run/react'
+import { NavLink, Outlet } from 'react-router'
 
 import { Container } from '~/components/container'
 import { Header } from '~/components/header'
 import { ensureAuthenticated } from '~/utils/session.server'
 
-import type { LoaderFunctionArgs } from '@remix-run/node'
+import type { LoaderFunctionArgs } from 'react-router'
 
 export async function loader({ request }: LoaderFunctionArgs) {
   return await ensureAuthenticated(request)

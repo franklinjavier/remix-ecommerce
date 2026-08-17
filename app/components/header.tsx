@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from '@remix-run/react'
+import { NavLink, useLocation } from 'react-router'
 
 import { Container } from '~/components/container'
 import { Filters } from '~/components/filters'

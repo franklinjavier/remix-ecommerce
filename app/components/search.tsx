@@ -1,4 +1,4 @@
-import { Form, useSearchParams, useSubmit } from '@remix-run/react'
+import { Form, useSearchParams, useSubmit } from 'react-router'
 
 export function Search() {
   const [params] = useSearchParams()
@@ -15,7 +15,7 @@ export function Search() {
     <Form action="/" className="w-full max-w-4xl" id="search-form" onChange={handleChange}>
       <input
         autoComplete="off"
-        className="border-radius h-14 w-full rounded-lg border-none px-5 py-2 text-xl text-gray-700 shadow-md outline-none focus:ring-4 focus:ring-indigo-600 md:h-16 md:text-3xl"
+        className="border-radius h-14 w-full rounded-lg border-none bg-white px-5 py-2 text-xl text-gray-700 shadow-md outline-none focus:ring-4 focus:ring-indigo-600 md:h-16 md:text-3xl"
         defaultValue={query}
         id="query"
         name="query"

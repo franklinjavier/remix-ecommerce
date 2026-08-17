@@ -1,5 +1,4 @@
-import { json } from '@remix-run/node'
-import { useLoaderData } from '@remix-run/react'
+import { data, useLoaderData } from 'react-router'
 
 import { Container } from '~/components/container'
 import { Header } from '~/components/header'
@@ -8,18 +7,18 @@ import { Showcase } from '~/components/showcase'
 import { search } from '~/models/search.server'
 import type { Product } from '~/types/product'
 
-import type { LoaderFunctionArgs } from '@remix-run/node'
+import type { LoaderFunctionArgs } from 'react-router'
 
 export async function loader({ request, params }: LoaderFunctionArgs) {
   const { category } = params
   const searchParams = Object.fromEntries(new URL(request.url).searchParams)
 
-  const data = await search('', { filters: `categories: "${category}"`, ...searchParams })
+  const result = await search('', { filters: `categories: "${category}"`, ...searchParams })
 
-  if (!data?.hits?.length) throw json(null, { status: 404 })
+  if (!result?.hits?.length) throw data(null, { status: 404 })
 
-  const products = data.hits as Product[]
-  return json({ products })
+  const products = result.hits as Product[]
+  return { products }
 }
 
 export default function Category() {
